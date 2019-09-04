@@ -33,7 +33,7 @@
           let note = randomInteger(64, 81);
           console.log("MIDI root: " + note)
           s.noteOn( note, audioContext.currentTime );
-          s.noteOn( note+randomInteger(3, 5), audioContext.currentTime );
+          s.noteOn( note+randomInteger(3, 4), audioContext.currentTime );
           s.noteOn( note+7, audioContext.currentTime );
 
           setTimeout( () => {
