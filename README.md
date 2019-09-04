@@ -2,6 +2,8 @@
 
 This project was a test to try out the webaudio API. It works similar to Tonejs and not meant for production. Tonejs is much better for that.
 
+Tryout at https://manjebrinkhuis.github.io/webaudio-synth/
+
 ## Usage
 
 Describe a synth as object
