@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Synth test</title>
+    <script src="./audio.js">
+    </script>
+    <script>
+      // Create a synth
+      let s = createSynth( defaultSynth );
+
+      // Connect to output
+      s.connect( audioContext.destination );
+
+
+      function randomInteger(from, to) {
+        /**
+        Pick random integer between form and to.
+        **/
+        let val = from + (Math.random() * (to - from));
+
+        return Math.round(val)
+      }
+
+      // Play chords
+      function playChords() {
+        /**
+        Play a few random major chords.
+        **/
+        console.log("Playing major chords")
+
+        // Set interval to keep playing random chords
+        let playing = setInterval( () => {
+          let note = randomInteger(64, 81);
+          console.log("MIDI root: " + note)
+          s.noteOn( note, audioContext.currentTime );
+          s.noteOn( note+4, audioContext.currentTime );
+          s.noteOn( note+7, audioContext.currentTime );
+
+          setTimeout( () => {
+            s.noteOff( note, audioContext.currentTime + .25 );
+            s.noteOff( note+4, audioContext.currentTime + .25 );
+            s.noteOff( note+7, audioContext.currentTime + .25 );
+          }, 100)
+
+        }, 500);
+
+        // Set timeout to stop playing random chords
+        setTimeout( () => {
+          clearInterval( playing );
+          console.log( 'Stopped' );
+
+          for (let i; i < 100; i++) {
+            s.noteOff( i, 0 )
+          }
+
+        }, 5000)
+
+      }
+    </script>
+  </head>
+  <body>
+    <p>Be aware, this sounds pretty bad!</p>
+    <button onclick="playChords()">Play random chords</script>
+  </body>
+</html>
