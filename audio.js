@@ -1,4 +1,4 @@
-var audioContext = new window.AudioContext();
+let audioContext = new window.AudioContext();
 
 // Concert A4
 const A4MIDI = 69
